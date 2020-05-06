@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="cordova.js"></script>
+<link href="jquery.mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+<script type="text/javascript" src="jquery.mobile/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){ //$(document).ready(function(){});
+		function camSuccess(imgData){
+			$("#img_PH").attr("src", imgData);			
+			
+			//<img src="file://whereYouFileIsStoredOnThePhone/img.jpg">
+			
+			}
+		function camError(error){
+			
+			alert(error);
+			
+			}
+			
+		function accessCamera(){
+			
+			var options = {
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA //PHOTOGALLERY
+				
+				};
+				
+				navigator.camera.getPicture(camSuccess, camError, options);
+			
+			}
+			
+		$("#btn_camera").on("click", accessCamera);
+			
+	});
+
+</script>
+<script type="text/javascript" src="jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+<body>
+	<div data-role="page">
+    	<div data-role="header">
+        	<h1>Camera App</h1>
+        </div>
+     <div class="uf-content">
+          <button id="btn_camera">Camera</button>
+     	  <img id="img_camPH">
+     </div>
+   </div>
+
+</body>
+</html>
